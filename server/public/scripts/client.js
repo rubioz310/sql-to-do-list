@@ -4,6 +4,7 @@ function onReady(){
     console.log('jQuery linked successfully');
     getTasks();
     $('#newTask').on('click', addTask);
+    $('#tasksTable').on('click', '.complete', completeTask);
 }
 
 function getTasks(){
@@ -20,12 +21,13 @@ function getTasks(){
 function showTasks(tasks){
     $('#tasksTable').empty();
     for (const task of tasks) {
+        let status = task.isComplete ? 'Complete' : 'In progress';
         $('#tasksTable').append(`
             <tr>
                 <th>${task.task}</th>
-                <th>${task.isComplete}</th>
-                <th><button>Complete</button></th>
-                <th><button>Delete</button></th>
+                <th>${status}</th>
+                <th><button data-id=${task.id} class="complete">Complete</button></th>
+                <th><button data-id=${task.id} class="delete">Delete</button></th>
             </tr>
         `);
     }
@@ -44,7 +46,20 @@ function addTask(){
     }).then(response => {
         getTasks();
     }).catch(response => {
-        console.log('Error getting tasks', response);
+        console.log('Error adding new task', response);
+    })
+}
+
+function completeTask(){
+    let id = $(this).data('id');
+    console.log(id);
+    $.ajax({
+        method: 'PUT',
+        url: `/task/${id}`,
+    }).then(response => {
+        getTasks();
+    }).catch(response => {
+        console.log('Error changing status of task', response);
     })
 }
 
