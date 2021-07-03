@@ -1,11 +1,21 @@
 body{
-    background-color: rgb(0, 219, 219);
+    background-color: #84CEEB ;
 }
-
+.header{
+    background-color: #5680E9;
+}
 .completeTask{
     background-color: rgb(124, 223, 157);
 }
 
+.taskHeader{
+    background-color: #5AB9EA;
+}
 .taskInProgress{
     background-color: rgb(243, 226, 129);
+}
+
+input{
+    background-color: #C1C8E4;
+    text-align: center;
 }

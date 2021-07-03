@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 router.get('/', (req, res) =>{
-    let queryText = 'SELECT * FROM "ToDoList";';
+    let queryText = 'SELECT * FROM "ToDoList" ORDER BY "isComplete";';
 
     pool.query(queryText)
     .then(result => {

@@ -25,12 +25,17 @@ function showTasks(tasks){
     for (const task of tasks) {
         let status = task.isComplete ? 'Complete' : 'In progress';
         let statusClass = task.isComplete ? 'completeTask' : 'taskInProgress';
+        let completeBtn = ""
+        //If task is complete it will not show the complete button
+        if(!task.isComplete){
+            completeBtn = `<button data-id=${task.id} class="completeBtn btn btn-success">Complete</button>`
+        }
         $('#tasksTable').append(`
             <tr class=${statusClass}>
                 <th>${task.task}</th>
                 <th>${status}</th>
-                <th><button data-id=${task.id} class="completeBtn" ${task.isComplete ? "disabled":"" }>Complete</button></th>
-                <th><button data-id=${task.id} class="deleteBtn">Delete</button></th>
+                <th>${completeBtn}</th>
+                <th><button data-id=${task.id} class="deleteBtn btn btn-danger">Delete</button></th>
             </tr>
         `);
     }
