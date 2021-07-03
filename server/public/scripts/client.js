@@ -36,6 +36,7 @@ function addTask(){
         task: $('#taskInput').val(),
         isComplete: false
     }
+    clearInputs();
     $.ajax({
         method: 'POST',
         url: '/task',
@@ -45,4 +46,8 @@ function addTask(){
     }).catch(response => {
         console.log('Error getting tasks', response);
     })
+}
+
+function clearInputs(){
+    $('#taskInput').val('');
 }
