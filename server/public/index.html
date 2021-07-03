@@ -6,32 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="vendors/jquery-3.6.0.min.js"></script>
     <script src="scripts/client.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/styles.css">
     <title>To Do List</title>
 </head>
 <body>
-    <head>
-        <h1>
-            To Do List
-        </h1>
-    </head>
+
+    <header>
+        <div class="container-fluid header">
+            <div class="row">
+                <img src="./check-mark.png" class="col-1 pt-1">
+                <h1 class="col-8 display-1"><strong>To Do List</strong></h1>
+            </div>
+        </div>
+    </header>
+
     <main>
-        <section>
-            <input type="text" id="taskInput">
-            <button id="newTask">New Task</button>
-        </section>
-        <section>
-            <table>
-                <thead>
+        <div class="container">
+            <div class="row justify-content-center pt-5 pb-3">
+                <div class="col-sm-6 input-group-lg">
+                    <input type="text" id="taskInput" class="form-control" placeholder="New task here">
+                </div>
+            </div>
+            <div class="row justify-content-center pb-5">
+                <button id="newTask" class="btn btn-success col-sm-3">Add Task</button>
+            </div>
+        </div>
+
+        <section class="container">
+            <table class="table table-bordered table-striped table-hover text-center align-middle" >
+                <thead class="taskHeader">
                     <tr>
-                        <th>Task description</th>
-                        <th>Status</th>
-                        <th>Change status</th>
-                        <th>Delete button</th> <!-- Remember to remove column header-->
+                        <th class="col-md-7">To Do List</th>
+                        <th class="col-md-1">Status</th>
+                        <th class="col-md-2" colspan="2"></th>
                     </tr>
                 </thead>
                 <tbody id="tasksTable"> 
-
                 </tbody>
             </table>
         </section>
@@ -39,5 +50,8 @@
     <footer>
 
     </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
