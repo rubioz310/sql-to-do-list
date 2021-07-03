@@ -2,7 +2,8 @@ $(onReady);
 
 function onReady(){
     console.log('jQuery linked successfully');
-    getTasks();   
+    getTasks();
+    $('#newTask').on('click', addTask);
 }
 
 function getTasks(){
@@ -26,6 +27,22 @@ function showTasks(tasks){
                 <th><button>Complete</button></th>
                 <th><button>Delete</button></th>
             </tr>
-        `)
+        `);
     }
+}
+
+function addTask(){
+    let newTask = {
+        task: $('#taskInput').val(),
+        isComplete: false
+    }
+    $.ajax({
+        method: 'POST',
+        url: '/task',
+        data: newTask
+    }).then(response => {
+        getTasks();
+    }).catch(response => {
+        console.log('Error getting tasks', response);
+    })
 }

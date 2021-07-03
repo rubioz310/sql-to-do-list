@@ -16,4 +16,18 @@ router.get('/', (req, res) =>{
     })
 });
 
+router.post('/', (req, res) =>{
+    let newTask = req.body;
+    let queryText = `INSERT INTO "ToDoList" ("task", "isComplete")
+            VALUES ($1, $2);`;
+
+    pool.query(queryText, [newTask.task, newTask.isComplete])
+    .then(result => {
+        res.sendStatus(201);
+    }).catch(err => {
+        console.log(`Error making query ${queryText}`, err);
+        res.sendStatus(500);
+    })
+});
+
 module.exports = router;
