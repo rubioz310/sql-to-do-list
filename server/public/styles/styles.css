@@ -18,6 +18,11 @@ h1{
 
 .taskHeader{
     background-color: #5AB9EA;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+}
+#tasksTable{
+    font-size: 18px;
 }
 .taskInProgress{
     background-color: rgb(243, 226, 129);
