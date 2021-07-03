@@ -4,8 +4,8 @@ function onReady(){
     console.log('jQuery linked successfully');
     getTasks();
     $('#newTask').on('click', addTask);
-    $('#tasksTable').on('click', '.complete', completeTask);
-    $('#tasksTable').on('click', '.delete', deleteTask);
+    $('#tasksTable').on('click', '.completeBtn', completeTask);
+    $('#tasksTable').on('click', '.deleteBtn', deleteTask);
 
 }
 
@@ -24,12 +24,13 @@ function showTasks(tasks){
     $('#tasksTable').empty();
     for (const task of tasks) {
         let status = task.isComplete ? 'Complete' : 'In progress';
+        let statusClass = task.isComplete ? 'completeTask' : 'taskInProgress';
         $('#tasksTable').append(`
-            <tr>
+            <tr class=${statusClass}>
                 <th>${task.task}</th>
                 <th>${status}</th>
-                <th><button data-id=${task.id} class="complete">Complete</button></th>
-                <th><button data-id=${task.id} class="delete">Delete</button></th>
+                <th><button data-id=${task.id} class="completeBtn">Complete</button></th>
+                <th><button data-id=${task.id} class="deleteBtn">Delete</button></th>
             </tr>
         `);
     }
