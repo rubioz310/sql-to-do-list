@@ -29,7 +29,7 @@ function showTasks(tasks){
             <tr class=${statusClass}>
                 <th>${task.task}</th>
                 <th>${status}</th>
-                <th><button data-id=${task.id} class="completeBtn">Complete</button></th>
+                <th><button data-id=${task.id} class="completeBtn" ${task.isComplete ? "disabled":"" }>Complete</button></th>
                 <th><button data-id=${task.id} class="deleteBtn">Delete</button></th>
             </tr>
         `);
