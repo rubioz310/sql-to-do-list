@@ -3,7 +3,15 @@ body{
 }
 .header{
     background-color: #5680E9;
+    height: 100px;
 }
+h1{
+    color: #d4d4d4;
+}
+.header img{
+    height: 80px;
+}
+
 .completeTask{
     background-color: rgb(124, 223, 157);
 }
@@ -15,7 +23,7 @@ body{
     background-color: rgb(243, 226, 129);
 }
 
-input{
-    background-color: #C1C8E4;
+#taskInput{
+    background-color: #e4fffd;
     text-align: center;
 }

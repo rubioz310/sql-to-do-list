@@ -28,14 +28,14 @@ function showTasks(tasks){
         let completeBtn = ""
         //If task is complete it will not show the complete button
         if(!task.isComplete){
-            completeBtn = `<button data-id=${task.id} class="completeBtn btn btn-success">Complete</button>`
+            completeBtn = `<button data-id=${task.id} class="completeBtn btn btn-success btn-sm">Complete</button>`
         }
         $('#tasksTable').append(`
             <tr class=${statusClass}>
                 <th>${task.task}</th>
                 <th>${status}</th>
                 <th>${completeBtn}</th>
-                <th><button data-id=${task.id} class="deleteBtn btn btn-danger">Delete</button></th>
+                <th><button data-id=${task.id} class="deleteBtn btn btn-danger btn-sm">Delete</button></th>
             </tr>
         `);
     }
