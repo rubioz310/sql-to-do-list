@@ -73,15 +73,28 @@ function completeTask(){
 
 function deleteTask(){
     let id = $(this).data('id');
-    console.log(id);
-    $.ajax({
-        method: 'DELETE',
-        url: `/task/${id}`,
-    }).then(response => {
-        getTasks();
-    }).catch(response => {
-        console.log('Error deleting task', response);
-    })
+    swal({
+        title: "Are you sure?",
+        text: "Once deleted, you will not be able to get it back!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          swal("Task deleted!", {
+            icon: "success",
+          });
+          $.ajax({
+                method: 'DELETE',
+                url: `/task/${id}`,
+            }).then(response => {
+                getTasks();
+            }).catch(response => {
+                console.log('Error deleting task', response);
+            })
+        }
+      });
 }
 
 function clearInputs(){
