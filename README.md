@@ -1,9 +1,11 @@
 # Project Name
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+SQL TO DO LIST
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
+So this weekend assignment is complete now. 
+First one where I implemented bootstrap and it was actually easier than I thought it would be but there is still a lot to learn. 
+For some reason the app can save an empty string on the database even if database task is set up for not being null. Going to need some inputs validation to prevent this but meanwhile it helps with testing.
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+Anyways it was a nice project where I learned more about styling and git branches. Still having issues with CSS tho.
