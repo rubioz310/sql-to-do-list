@@ -3,9 +3,10 @@ const express = require('express');
 
 const router = express.Router();
 
-
+//Send all tasks back
 router.get('/', (req, res) =>{
     let order = req.query.order;
+    //By receiving 'ASC' or 'DESC' on order will show incomplete or complete task first respectively
     let queryText = `SELECT * FROM "ToDoList" ORDER BY "isComplete" ${order}, "id" ASC;`;
 
     pool.query(queryText)
@@ -16,7 +17,7 @@ router.get('/', (req, res) =>{
         res.sendStatus(500);
     })
 });
-
+//New task
 router.post('/', (req, res) =>{
     let newTask = req.body;
     let queryText = `INSERT INTO "ToDoList" ("task", "isComplete")
@@ -30,7 +31,7 @@ router.post('/', (req, res) =>{
         res.sendStatus(500);
     })
 });
-
+//Change a incomplete task to complete
 router.put('/:id', (req, res) =>{
     let id = req.params.id;
     let completionDate = new Date();
@@ -46,7 +47,7 @@ router.put('/:id', (req, res) =>{
         res.sendStatus(500);
     })
 });
-
+//Delete task
 router.delete('/:id', (req, res) =>{
     let id = req.params.id;
     let queryText = `DELETE FROM "ToDoList"
