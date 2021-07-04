@@ -1,15 +1,14 @@
 $(onReady);
-
+let order = 'ASC';
 function onReady(){
-    console.log('jQuery linked successfully');
-    getTasks('ASC');
+    getTasks();
     $('#newTask').on('click', addTask);
     $('#tasksTable').on('click', '.completeBtn', completeTask);
     $('#tasksTable').on('click', '.deleteBtn', deleteTask);
-
+    $('#changeOrderBtn').on('click', changeOrder);
 }
 
-function getTasks(order){
+function getTasks(){
     $.ajax({
         method: 'GET',
         url: `/task?order=${order}`
@@ -99,4 +98,17 @@ function deleteTask(){
 
 function clearInputs(){
     $('#taskInput').val('');
+}
+
+function changeOrder(){
+    order = order === 'ASC' ? 'DESC' : 'ASC';
+    switch (order){
+        case 'ASC':
+            $('#changeOrderBtn').text('Complete First');
+            break;
+        case 'DESC':
+            $('#changeOrderBtn').text('Incomplete First');
+            break;
+    }
+    getTasks();
 }
