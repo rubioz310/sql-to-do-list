@@ -24,15 +24,20 @@ function showTasks(tasks){
     for (const task of tasks) {
         let status = task.isComplete ? 'Complete' : 'In progress';
         let statusClass = task.isComplete ? 'completeTask' : 'taskInProgress';
-        let completeBtn = ""
+        let completeBtn = "";
+        let completionDate = "";
         //If task is complete it will not show the complete button
         if(!task.isComplete){
             completeBtn = `<button data-id=${task.id} class="completeBtn btn btn-success btn-sm">Complete</button>`
+        }
+        if (task.completeDate){
+            completionDate = prettyDate(task.completeDate)
         }
         $('#tasksTable').append(`
             <tr class=${statusClass}>
                 <th>${task.task}</th>
                 <th>${status}</th>
+                <th>${completionDate}</th>
                 <th>${completeBtn}</th>
                 <th><button data-id=${task.id} class="deleteBtn btn btn-danger btn-sm">Delete</button></th>
             </tr>
@@ -114,3 +119,13 @@ function changeOrder(){
     }
     getTasks();
 }
+
+function prettyDate(unformattedDate) {
+    const dateString = new Date(unformattedDate);
+    const year = dateString.getFullYear();
+    let month = (1 + dateString.getMonth()).toString() ;
+    let day = dateString.getDate().toString();
+    month = month.length === 1 ? '0' + month : month;
+    day = day.length === 1 ? '0' + day : day;
+    return month + '-' + day + '-' + year;
+} //end prettyDate

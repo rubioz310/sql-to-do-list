@@ -33,11 +33,12 @@ router.post('/', (req, res) =>{
 
 router.put('/:id', (req, res) =>{
     let id = req.params.id;
+    let completionDate = new Date();
     let queryText = `UPDATE "ToDoList" 
-                    SET "isComplete" = true
-                    WHERE "id" = $1`;
+                    SET "isComplete" = true, "completeDate" = $1
+                    WHERE "id" = $2`;
 
-    pool.query(queryText, [id])
+    pool.query(queryText, [completionDate, id])
     .then(result => {
         res.sendStatus(202);
     }).catch(err => {
