@@ -2,17 +2,17 @@ $(onReady);
 
 function onReady(){
     console.log('jQuery linked successfully');
-    getTasks();
+    getTasks('ASC');
     $('#newTask').on('click', addTask);
     $('#tasksTable').on('click', '.completeBtn', completeTask);
     $('#tasksTable').on('click', '.deleteBtn', deleteTask);
 
 }
 
-function getTasks(){
+function getTasks(order){
     $.ajax({
         method: 'GET',
-        url: '/task'
+        url: `/task?order=${order}`
     }).then(response => {
         showTasks(response);
     }).catch(response => {
