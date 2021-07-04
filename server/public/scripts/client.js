@@ -105,9 +105,11 @@ function changeOrder(){
     switch (order){
         case 'ASC':
             $('#changeOrderBtn').text('Complete First');
+            $('#changeOrderBtn').removeClass('taskInProgress');
             break;
         case 'DESC':
             $('#changeOrderBtn').text('Incomplete First');
+            $('#changeOrderBtn').addClass('taskInProgress')
             break;
     }
     getTasks();
