@@ -73,6 +73,7 @@ function completeTask(){
 
 function deleteTask(){
     let id = $(this).data('id');
+    swal("Task deleted");
     console.log(id);
     $.ajax({
         method: 'DELETE',
